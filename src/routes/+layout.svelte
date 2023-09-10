@@ -1,5 +1,10 @@
 <script>
 	import '../app.postcss';
+	import DashboardMainNav from '$lib/components/DashboardMainNav.svelte';
 </script>
 
-<slot />
+<div class="flex-col md:flex">
+	<DashboardMainNav />
+	<slot />
+</div>
+
