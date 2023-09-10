@@ -5,6 +5,8 @@
 
 <div class="flex-col md:flex">
 	<DashboardMainNav />
-	<slot />
+	<div class="flex-1 space-y-4 p-8 pt-6">
+		<slot />
+	</div>
 </div>
 

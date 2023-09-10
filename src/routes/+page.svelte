@@ -4,36 +4,28 @@
     import * as Tabs from "$lib/components/ui/tabs";
 </script>
 
-<!-- NAVBAR -->
-<div class="border-b">
-    
+<!-- Title -->
+<div class="flex items-center justify-between space-y-2">
+    <h2 class="text-3xl font-bold tracking-tight">Dashboard</h2>
 </div>
-<!-- SECTION -->
-<div class="flex-1 space-y-4 p-8 pt-6">
-    <!-- Title -->
-    <div class="flex items-center justify-between space-y-2">
-        <h2 class="text-3xl font-bold tracking-tight">Dashboard</h2>
-    </div>
-    <!-- TABS -->
-    <Tabs.Root value="favs" class="space-y-4">
-        <Tabs.List>
-            <Tabs.Trigger value="favs">Favoriten</Tabs.Trigger>
-            <Tabs.Trigger value="allfunctions">Alle Funktionen</Tabs.Trigger>
-        </Tabs.List>
-        <Tabs.Content value="favs" class="space-y-4">
-            <Card.Root>
-                <Card.Header>
-                  <Card.Title>Neue Funktion!</Card.Title>
-                  <Card.Description>Dies ist eine Funktion, die eine bestimmte Aufgabe hat.</Card.Description>
-                </Card.Header>
-                <Card.Content>
-                  <Button>Open Function</Button>
-                </Card.Content>
-              </Card.Root>
-
-        </Tabs.Content>
-        <Tabs.Content value="allfunctions" class="space-y-4">
-            <h1>Hello from the second Page!</h1>
-        </Tabs.Content>
-    </Tabs.Root>
-</div>
+<!-- TABS -->
+<Tabs.Root value="favs" class="space-y-4">
+    <Tabs.List>
+        <Tabs.Trigger value="favs">Favoriten</Tabs.Trigger>
+        <Tabs.Trigger value="allfunctions">Alle Funktionen</Tabs.Trigger>
+    </Tabs.List>
+    <Tabs.Content value="favs" class="space-y-4">
+        <Card.Root>
+            <Card.Header>
+                <Card.Title>Neue Funktion!</Card.Title>
+                <Card.Description>Dies ist eine Funktion, die eine bestimmte Aufgabe hat.</Card.Description>
+            </Card.Header>
+            <Card.Content>
+                <Button>Open Function</Button>
+            </Card.Content>
+            </Card.Root>
+    </Tabs.Content>
+    <Tabs.Content value="allfunctions" class="space-y-4">
+        <h1>Hello from the second Page!</h1>
+    </Tabs.Content>
+</Tabs.Root>
