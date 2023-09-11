@@ -8,7 +8,7 @@
 <div class="border-b">
 	<div class="flex h-16 items-center">
 		<nav class="flex items-center space-x-4 lg:space-x-6 mx-8">
-			<a href="/" class="text-sm font-medium text-muted-foreground transition-colors hover:text-primary {path === '/' ? 'text-primary' : 'text-muted-foreground'}">
+			<a href="/dashboard" class="text-sm font-medium text-muted-foreground transition-colors hover:text-primary {path === '/dashboard' ? 'text-primary' : 'text-muted-foreground'}">
 				Dashboard
 			</a>
 			<a href="/sick" class="text-sm font-medium text-muted-foreground transition-colors hover:text-primary {path === '/sick' ? 'text-primary' : 'text-muted-foreground'}">
