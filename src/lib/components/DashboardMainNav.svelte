@@ -5,9 +5,7 @@
 	$: path = $page.url.pathname;
 
 	import { supabaseClient } from '$lib/supabase';
-	import type { PageData } from './$types';
-
-	export let data: PageData;
+	import type { SubmitFunction } from '@sveltejs/kit';
 
 	const submitLogout: SubmitFunction = async ({ cancel }) => {
 		const { error } = await supabaseClient.auth.signOut();
@@ -17,8 +15,6 @@
 		cancel();
 	};
 
-   
-	
 </script>
 <div class="border-b">
 	<div class="flex h-16 items-center">
@@ -32,7 +28,7 @@
 			<a href="/profile" class="text-sm font-medium text-muted-foreground transition-colors hover:text-primary {path === '/profile' ? 'text-primary' : 'text-muted-foreground'}">
 				Persönliche Daten
 			</a>
-			<a href="/" class="text-sm font-medium text-muted-foreground transition-colors hover:text-primary {path === '/settings' ? 'text-primary' : 'text-muted-foreground'}"
+			<a href="/" class="text-sm font-medium text-muted-foreground transition-colors hover:text-primary {path === '/' ? 'text-primary' : 'text-muted-foreground'}"
 			on:click={submitLogout}>
 				Logout
 		</nav>
