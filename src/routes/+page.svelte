@@ -7,8 +7,8 @@
 
 <section class="h-screen w-screen flex justify-center items-center">
 
-        <div id="card" class="flex justify-center items-center min-w-80 max-w-sm">
-            <Card.Root>
+        <div id="card" class="flex justify-center items-center w-80 sm:w-96 max-w-sm">
+            <Card.Root class="sm:p-2">
                 <Card.Header class="space-y-1">
                     <Card.Title class="text-2xl">Login</Card.Title>
                     <Card.Description>
