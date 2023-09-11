@@ -12,6 +12,7 @@
     const session = supabaseClient.auth.getSession();
     console.log(session);
 
+
     async function handleSubmit() {
         const { data, error } = await supabaseClient.auth.signInWithOtp({
         email: email,
