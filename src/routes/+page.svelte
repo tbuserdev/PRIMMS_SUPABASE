@@ -17,7 +17,8 @@
         const { data, error } = await supabaseClient.auth.signInWithOtp({
         email: email,
         options: {
-            emailRedirectTo: '/dashboard'
+            emailRedirectTo: '/dashboard',
+            shouldCreateUser: false,
         }
         })
         mail = true;
