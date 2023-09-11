@@ -3,12 +3,22 @@
 	import * as Card from "$lib/components/ui/card";
 	import { Label } from "$lib/components/ui/label";
 	import { Input } from "$lib/components/ui/input";
+    import { supabaseClient } from "$lib/supabase";
     
     let mail: boolean = false;
     let email: string;
+    let error = null;
 
-    function handleEvent() {
-        console.log(email)
+    const session = supabaseClient.auth.getSession();
+    console.log(session);
+
+    async function handleSubmit() {
+        const { data, error } = await supabaseClient.auth.signInWithOtp({
+        email: email,
+        options: {
+            emailRedirectTo: '/dashboard'
+        }
+        })
         mail = true;
     }
 </script>
@@ -36,7 +46,7 @@
                     </div>
                 </Card.Content>
                 <Card.Footer>
-                    <Button on:click={handleEvent} class="w-full">Link senden</Button>
+                    <Button on:click={handleSubmit} class="w-full">Link senden</Button>
                 </Card.Footer>
             </Card.Root>
         {:else}

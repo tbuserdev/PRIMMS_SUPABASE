@@ -1,8 +1,23 @@
 <script lang="ts">
+	// NAV
     import { page } from '$app/stores';
 	let path: string;
+	$: path = $page.url.pathname;
 
-    $: path = $page.url.pathname;
+	import { supabaseClient } from '$lib/supabase';
+	import type { PageData } from './$types';
+
+	export let data: PageData;
+
+	const submitLogout: SubmitFunction = async ({ cancel }) => {
+		const { error } = await supabaseClient.auth.signOut();
+		if (error) {
+			console.log(error);
+		}
+		cancel();
+	};
+
+   
 	
 </script>
 <div class="border-b">
@@ -17,6 +32,9 @@
 			<a href="/profile" class="text-sm font-medium text-muted-foreground transition-colors hover:text-primary {path === '/profile' ? 'text-primary' : 'text-muted-foreground'}">
 				Persönliche Daten
 			</a>
+			<a href="/" class="text-sm font-medium text-muted-foreground transition-colors hover:text-primary {path === '/settings' ? 'text-primary' : 'text-muted-foreground'}"
+			on:click={submitLogout}>
+				Logout
 		</nav>
 	</div>
 </div>
