@@ -3,7 +3,6 @@
 	import * as Card from "$lib/components/ui/card";
 	import { Label } from "$lib/components/ui/label";
 	import { Input } from "$lib/components/ui/input";
-    import LogoutButton from "$lib/components/LogoutButton.svelte";
 
     export let form;
     export let data;
