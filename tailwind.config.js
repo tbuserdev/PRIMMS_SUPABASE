@@ -13,6 +13,10 @@ const config = {
 			}
 		},
 		extend: {
+			height: {
+				screen: ['100vh /* fallback for Opera, IE and etc. */', '100dvh'],
+				}
+			},
 			colors: {
 				border: "hsl(var(--border))",
 				input: "hsl(var(--input))",
@@ -57,7 +61,6 @@ const config = {
 				sans: [...fontFamily.sans]
 			}
 		}
-	},
-};
+	}
 
 export default config;
