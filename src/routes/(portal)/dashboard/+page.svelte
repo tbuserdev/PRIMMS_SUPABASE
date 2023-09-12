@@ -2,11 +2,13 @@
 	import { Button } from "$lib/components/ui/button";
 	import * as Card from "$lib/components/ui/card";
     import * as Tabs from "$lib/components/ui/tabs";
+    import LogoutButton from "$lib/components/LogoutButton.svelte";
 </script>
 
 <!-- Title -->
 <div class="flex items-center justify-between space-y-2">
     <h2 class="text-3xl font-bold tracking-tight">Dashboard</h2>
+    <LogoutButton />
 </div>
 <!-- TABS -->
 <Tabs.Root value="favs" class="space-y-4">

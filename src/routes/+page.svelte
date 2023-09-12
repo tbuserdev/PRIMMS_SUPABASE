@@ -3,54 +3,38 @@
 	import * as Card from "$lib/components/ui/card";
 	import { Label } from "$lib/components/ui/label";
 	import { Input } from "$lib/components/ui/input";
-    import { supabaseClient } from "$lib/supabase";
-    
-    let mail: boolean = false;
-    let email: string;
-    let error = null;
 
-    const session = supabaseClient.auth.getSession();
-    console.log(session);
-
-
-    async function handleSubmit() {
-        const { data, error } = await supabaseClient.auth.signInWithOtp({
-        email: email,
-        options: {
-            emailRedirectTo: '/dashboard',
-            shouldCreateUser: false,
-        }
-        })
-        mail = true;
-    }
+    export let form;
 </script>
 
-<section class="h-screen w-screen flex justify-center items-center">
+<main class="h-screen w-screen flex justify-center items-center">
 
     <div id="card" class="flex justify-center items-center w-80 sm:w-96 max-w-sm">
-        {#if !mail}
-            <Card.Root class="sm:p-2">
-                <Card.Header class="space-y-1">
-                    <Card.Title class="text-2xl">Login</Card.Title>
-                    <Card.Description>
-                        Bitte gib deine Email-Adresse ein, um deinen Login-Link zu erhalten.
-                    </Card.Description>
-                </Card.Header>
-                <Card.Content class="grid gap-4">
-                    <div class="relative">
-                        <div class="absolute inset-0 flex items-center">
-                            <span class="w-full border-t" />
+        {#if !form?.success}
+            <form action="?/login" method="POST">
+                <Card.Root class="sm:p-2">
+                    <Card.Header class="space-y-1">
+                        <Card.Title class="text-2xl">Login</Card.Title>
+                        <Card.Description>
+                            Bitte gib deine Email-Adresse ein, um deinen Login-Link zu erhalten.
+                        </Card.Description>
+                    </Card.Header>
+                    <Card.Content class="grid gap-4">
+                        <div class="relative">
+                            <div class="absolute inset-0 flex items-center">
+                                <span class="w-full border-t" />
+                            </div>
                         </div>
-                    </div>
-                    <div class="grid gap-2">
-                        <Label for="email">E-Mail Adresse</Label>
-                        <Input id="email" type="email" placeholder="vorname.name@schule-muenchenstein.ch" bind:value={email}/>
-                    </div>
-                </Card.Content>
-                <Card.Footer>
-                    <Button on:click={handleSubmit} class="w-full">Link senden</Button>
-                </Card.Footer>
-            </Card.Root>
+                        <div class="grid gap-2">
+                            <Label for="email">E-Mail Adresse</Label>
+                            <Input id="email" name="email" type="email" placeholder="vorname.name@schule-muenchenstein.ch"/>
+                        </div>
+                    </Card.Content>
+                    <Card.Footer>
+                        <Button type="submit" class="w-full">Link senden</Button>
+                    </Card.Footer>
+                </Card.Root>
+            </form>
         {:else}
             <Card.Root class="sm:p-2">
                 <Card.Header class="space-y-1">
@@ -77,4 +61,4 @@
         {/if}
     </div>
 
-</section>
+</main>
