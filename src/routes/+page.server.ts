@@ -4,17 +4,21 @@ import { AuthApiError } from "@supabase/supabase-js"
 import { fail, redirect } from "@sveltejs/kit"
 import type { Actions } from "@sveltejs/kit"
 import { supabaseClient } from "$lib/supabase";
+import type { U } from 'vitest/dist/types-198fd1d9';
 
 export const load: PageServerLoad = async ({ url, locals }) => {
 	return { url: url.origin }
 }
 
 const getURL = () => {
-	let url = 
-	process?.env?.NEXT_PUBLIC_SITE_URL ?? // Set this to your site URL in production env.
-    process?.env?.NEXT_PUBLIC_VERCEL_URL ?? // Automatically set by Vercel.
-    'http://localhost:5173/'
+	let url: URL | string = '';
 
+	if (process?.env?.VERCEL_URL !== undefined) {
+		url = process?.env?.VERCEL_URL
+	} else if (process?.env?.URL == undefined) {
+		url = 'localhost:5173'
+	}
+	
 	// Make sure to include `https://` when not localhost.
 	url = url.includes('http') ? url : `https://${url}`
 	return url
