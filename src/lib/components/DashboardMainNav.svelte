@@ -1,19 +1,7 @@
 <script lang="ts">
-	// NAV
     import { page } from '$app/stores';
 	let path: string;
 	$: path = $page.url.pathname;
-
-	import { supabaseClient } from '$lib/supabase';
-	import type { SubmitFunction } from '@sveltejs/kit';
-
-	const submitLogout: SubmitFunction = async ({ cancel }) => {
-		const { error } = await supabaseClient.auth.signOut();
-		if (error) {
-			console.log(error);
-		}
-		cancel();
-	};
 
 </script>
 <div class="border-b">

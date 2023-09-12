@@ -17,7 +17,6 @@ export const load: PageServerLoad = async ({ url, locals }) => {
 
 export const actions: Actions = {
 	login: async ({ request, locals }) => {
-    console.log(request)
 		const body = Object.fromEntries(await request.formData())
 
 		const { data, error: err } = await supabaseClient.auth.signInWithOtp({
@@ -29,7 +28,6 @@ export const actions: Actions = {
         })
 
 		if (err) {
-            console.log(err)
 			if (err instanceof AuthApiError && err.status === 400) {
 				return fail(400, {
 					error: "Invalid credentials",
