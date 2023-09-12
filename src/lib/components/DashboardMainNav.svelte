@@ -4,6 +4,7 @@
 	$: path = $page.url.pathname;
 
 </script>
+
 <div class="border-b">
 	<div class="flex h-16 items-center">
 		<nav class="flex items-center space-x-4 lg:space-x-6 mx-8">
