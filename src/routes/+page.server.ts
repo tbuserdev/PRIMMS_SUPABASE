@@ -18,8 +18,13 @@ const getURL = () => {
 	} else if (process?.env?.URL == undefined) {
 		url = 'localhost:5173'
 	}
-	
-	// Make sure to include `https://` when not localhost.
+
+	if (process?.env?.VERCEL_BRANCH_URL !== undefined) {
+		url = process?.env?.VERCEL_BRANCH_URL
+	} else if (process?.env?.URL == undefined) {
+		url = 'localhost:5173'
+	}
+
 	url = url.includes('http') ? url : `https://${url}`
 	return url
 }
