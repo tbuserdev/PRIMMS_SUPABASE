@@ -13,6 +13,7 @@ export const load: PageServerLoad = async ({ url, locals }) => {
 const getURL = () => {
 	let url: URL | string = '';
 
+	/* Production Deployment 
 	if (process?.env?.VERCEL_URL !== undefined) {
 		url = process?.env?.VERCEL_URL
 	} else if (process?.env?.URL == undefined) {
@@ -24,6 +25,10 @@ const getURL = () => {
 	} else if (process?.env?.URL == undefined) {
 		url = 'localhost:5173'
 	}
+	*/
+
+	// Development Deployment
+	url = 'http://localhost:5173/'
 
 	url = url.includes('http') ? url : `https://${url}`
 	return url

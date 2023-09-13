@@ -21,11 +21,11 @@
     <Tabs.Content value="favs" class="space-y-4">
         <Card.Root>
             <Card.Header>
-                <Card.Title>Neue Funktion!</Card.Title>
+                <Card.Title>Jahresarbeitszeit & Berufsauftrag</Card.Title>
                 <Card.Description>Dies ist eine Funktion, die eine bestimmte Aufgabe hat.</Card.Description>
             </Card.Header>
             <Card.Content>
-                <Button>Open Function</Button>
+                <Button href="/dashboard/jaba">Formular ausfüllen</Button>
             </Card.Content>
             </Card.Root>
     </Tabs.Content>
