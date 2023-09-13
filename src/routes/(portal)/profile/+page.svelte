@@ -1,9 +1,5 @@
 <script lang="ts">
     export let data;
-    if (data) {
-        console.log(data);
-    }
-
 </script>
 
 <div class="flex-col items-center justify-between space-y-2">
