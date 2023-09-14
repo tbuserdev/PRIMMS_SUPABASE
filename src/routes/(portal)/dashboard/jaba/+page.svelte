@@ -5,8 +5,6 @@
     export let form: SuperValidated<FormSchema>;
     import { Label } from "$lib/components/ui/label";
     import * as RadioGroup from "$lib/components/ui/radio-group";
-    
-    export let data;
 </script>
 
 <main>
@@ -15,6 +13,14 @@
     </div>
     <div>
         <Form.Root method="POST" {form} schema={formSchema} let:config>
+
+            <p class="text-sm text-muted-foreground mb-6"
+            >Beachte: Alle restlichen Daten auf dem Papierformular werden automatisch ausgefüllt.</p>
+
+            <h2 class="scroll-m-20 text-xl font-semibold tracking-tight mb-4 mt-2">
+                Besondere Aufgaben und/oder Arbeitsschwerpunkte
+            </h2>
+
             <Form.Field {config} name="team">
                 <Form.Item>
                     <Form.Label>Klassenteammitglieder</Form.Label>
@@ -55,18 +61,28 @@
                 </Form.Item>
             </Form.Field>
 
+            <h2 class="scroll-m-20 text-xl font-semibold tracking-tight mb-2 mt-6">
+                Verantwortlichkeiten
+            </h2>
+
+            <p class="text-sm text-muted-foreground mb-6"
+            >Im Rahmen der Funktionenbeschreibung und der Jahresarbeitszeit ist die Lehrperson selbst verantwortlich, Entscheidungen zu treffen 
+            und Verbindlichkeiten einzugehen. Sie ist auf Anfrage gegenüber der Schulleitung rechenschaftspflichtig. Situationen, die ausserhalb 
+            des Wirkungkreises oder der eigenen Kompetenzen liegen, werden mit dem zuständigen Mitglied der Schulleitung besprochen; der Dienstweg 
+            ist einzuhalten.</p>
+
             <RadioGroup.Root value="option-one">
-                <div class="flex items-center space-x-2">
+                <div class="flex items-center space-x-2 mb-2">
                   <RadioGroup.Item value="option-one" id="option-one" />
-                  <Label for="option-one">Option One</Label>
+                  <Label for="option-one">Die Jahresarbeitszeit in den Bereichen C, D, und E wird anhand einer Zeiterfassung erfasst.</Label>
                 </div>
-                <div class="flex items-center space-x-2">
+                <div class="flex items-center space-x-2 mb-2">
                   <RadioGroup.Item value="option-two" id="option-two" />
-                  <Label for="option-two">Option Two</Label>
+                  <Label for="option-two">Die Erbringung der Jahresarbeitszeit erfolgt in Eigenverantwortung.</Label>
                 </div>
               </RadioGroup.Root>
         
-            <Form.Button class="mt-6">Formular überprüfen</Form.Button>
+            <Form.Button class="mt-6">Formular bestätigen und abschicken</Form.Button>
         </Form.Root>
     </div>
 </main>
