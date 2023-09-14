@@ -3,10 +3,15 @@ import { superValidate } from "sveltekit-superforms/server";
 import { formSchema } from "./schema";
 
 
-export const load = () => {
-  return {
-    form: superValidate(formSchema)
-  };
+export const load = async ({ url, locals }) => {
+  return { 
+    url: url.origin,
+    locals: {
+      session: locals.session,
+      userProfile: locals.userProfile
+    },
+    form: superValidate(formSchema),
+  }
 };
 
 export const actions = {

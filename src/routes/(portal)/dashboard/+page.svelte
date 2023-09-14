@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { Button } from "$lib/components/ui/button";
 	import * as Card from "$lib/components/ui/card";
-    import * as Tabs from "$lib/components/ui/tabs";
     import LogoutButton from "$lib/components/LogoutButton.svelte";
 
     export let data;
@@ -9,7 +8,7 @@
 
 <!-- Title -->
 <div class="flex items-end justify-between space-y-2 mb-8">
-    <h2 class="text-3xl font-bold tracking-tight">{data.session?.user.email}</h2>
+    <h2 class="text-3xl font-bold tracking-tight">Hallo {data.locals.userProfile?.first_name} {data.locals.userProfile?.last_name}!</h2>
     <LogoutButton />
 </div>
 <!-- TABS -->
