@@ -68,7 +68,7 @@
         {#if data.session?.user}
         <Card.Root class="sm:p-2">
             <Card.Header class="space-y-1">
-                <Card.Title class="text-2xl">Hallo {data.session.user.email}!</Card.Title>
+                <Card.Title class="text-2xl">Hallo {data.locals.userProfile?.first_name}!</Card.Title>
                 <Card.Description>
                     Du wurdest erfolgreich eingeloggt. Klicke auf den Button, um zum Dashboard zu gelangen.
                 </Card.Description>

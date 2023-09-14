@@ -7,7 +7,13 @@ import { supabaseClient } from "$lib/supabase";
 import type { U } from 'vitest/dist/types-198fd1d9';
 
 export const load: PageServerLoad = async ({ url, locals }) => {
-	return { url: url.origin }
+	return { 
+		url: url.origin,
+		locals: {
+		  session: locals.session,
+		  userProfile: locals.userProfile
+		}
+	  }
 }
 
 const getURL = () => {
