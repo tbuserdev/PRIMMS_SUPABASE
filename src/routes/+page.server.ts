@@ -4,7 +4,6 @@ import { AuthApiError } from "@supabase/supabase-js"
 import { fail, redirect } from "@sveltejs/kit"
 import type { Actions } from "@sveltejs/kit"
 import { supabaseClient } from "$lib/supabase";
-import type { U } from 'vitest/dist/types-198fd1d9';
 
 export const load: PageServerLoad = async ({ url, locals }) => {
 	return { 

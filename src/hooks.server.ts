@@ -27,7 +27,7 @@ export const handle = async ({ event, resolve }) => {
 	
 
 	if (event.url.pathname.startsWith("/dashboard") 
-	|| event.url.pathname.startsWith("/sick") 
+	|| event.url.pathname.startsWith("/stellvertretungen") 
 	|| event.url.pathname.startsWith("/profile")) {
 		if (!session) {
 			throw redirect(303, "/")

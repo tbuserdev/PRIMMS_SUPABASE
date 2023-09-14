@@ -1,18 +1,18 @@
 <script lang="ts">
     import Button from "$lib/components/ui/button/button.svelte";
-import * as Table from "$lib/components/ui/table";
+    import * as Table from "$lib/components/ui/table";
 
     export let data;
 </script>
 
 <main>
     <div class="space-y-0.5 mb-8">
-        <h2 class="text-2xl font-bold tracking-tight">Persönliche Informationen</h2>
+        <h2 class="text-2xl font-bold tracking-tight">Persönliche Daten</h2>
         <p class="text-muted-foreground">
-            Verwalte deinen Account und siehe deine gespeicherten Daten.
+            Hier findest du deine persönlichen Daten.
         </p>
     </div>
-    
+
     <Table.Root>
         <Table.Header>
           <Table.Row>

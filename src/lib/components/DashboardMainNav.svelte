@@ -11,8 +11,8 @@
 			<a href="/dashboard" class="text-sm font-medium text-muted-foreground transition-colors hover:text-primary {path === '/dashboard' ? 'text-primary' : 'text-muted-foreground'}">
 				Dashboard
 			</a>
-			<a href="/sick" class="text-sm font-medium text-muted-foreground transition-colors hover:text-primary {path === '/sick' ? 'text-primary' : 'text-muted-foreground'}">
-				Ausfälle
+			<a href="/stellvertretungen" class="text-sm font-medium text-muted-foreground transition-colors hover:text-primary {path === '/sick' ? 'text-primary' : 'text-muted-foreground'}">
+				Stellvertretungen
 			</a>
 			<a href="/profile" class="text-sm font-medium text-muted-foreground transition-colors hover:text-primary {path === '/profile' ? 'text-primary' : 'text-muted-foreground'}">
 				Persönliche Daten
