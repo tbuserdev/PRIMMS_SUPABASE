@@ -1,4 +1,3 @@
-// src/routes/+page.server.ts
 import type { PageServerLoad } from './$types'
 import { AuthApiError } from "@supabase/supabase-js"
 import { fail, redirect } from "@sveltejs/kit"
@@ -40,10 +39,10 @@ const getURL = () => {
 }
 
 export const actions: Actions = {
-	login: async ({ request, locals }) => {
+	magiclink: async ({ request }) => {
 		const body = Object.fromEntries(await request.formData())
 
-		const { data, error: err } = await supabaseClient.auth.signInWithOtp({
+		const { error: err } = await supabaseClient.auth.signInWithOtp({
             email: body.email as string,
             options: {
                 emailRedirectTo: getURL(),
@@ -61,6 +60,6 @@ export const actions: Actions = {
 				message: "Server error. Try again later.",
 			})
 		}
-    return { success: true };
-	},
+    	return { success: true };
+	}
 }
