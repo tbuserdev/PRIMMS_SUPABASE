@@ -1,7 +1,6 @@
 import type { PageServerLoad } from './$types'
 import { AuthApiError } from "@supabase/supabase-js"
 import { fail, redirect } from "@sveltejs/kit"
-import type { Actions } from "@sveltejs/kit"
 import { supabaseClient } from "$lib/supabase";
 
 export const load: PageServerLoad = async ({ url, locals }) => {
@@ -14,38 +13,35 @@ export const load: PageServerLoad = async ({ url, locals }) => {
 	  }
 }
 
-const getURL = () => {
-	let url: URL | string = '';
+const getURL = ( redirect: Request ) => {
+	let page = redirect.url
+	let url: URL | string = '';	
 
-	/* Production Deployment 
 	if (process?.env?.VERCEL_URL !== undefined) {
 		url = process?.env?.VERCEL_URL
 	} else if (process?.env?.URL == undefined) {
-		url = 'localhost:5173'
+		url = 'http://localhost:5173/' 
 	}
 
 	if (process?.env?.VERCEL_BRANCH_URL !== undefined) {
 		url = process?.env?.VERCEL_BRANCH_URL
 	} else if (process?.env?.URL == undefined) {
-		url = 'localhost:5173'
+		url = 'http://localhost:5173/'
 	}
-	*/
-
-	// Development Deployment
-	url = 'http://localhost:5173/'
 
 	url = url.includes('http') ? url : `https://${url}`
+	console.log(url)
 	return url
 }
 
-export const actions: Actions = {
-	magiclink: async ({ request }) => {
+export const actions = {
+	default: async ({ request }) => {
 		const body = Object.fromEntries(await request.formData())
 
 		const { error: err } = await supabaseClient.auth.signInWithOtp({
             email: body.email as string,
             options: {
-                emailRedirectTo: getURL(),
+                emailRedirectTo: getURL(request),
                 shouldCreateUser: false,
             }
         })

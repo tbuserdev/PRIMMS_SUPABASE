@@ -1,6 +1,7 @@
 import "$lib/supabase"
 import { getSupabase } from "@supabase/auth-helpers-sveltekit"
 import { redirect } from "@sveltejs/kit"
+import { handleLoginRedirect } from "$lib/utils"
 
 export const handle = async ({ event, resolve }) => {
 	const { session, supabaseClient } = await getSupabase(event)
@@ -30,9 +31,17 @@ export const handle = async ({ event, resolve }) => {
 	|| event.url.pathname.startsWith("/stellvertretungen") 
 	|| event.url.pathname.startsWith("/profile")) {
 		if (!session) {
-			throw redirect(303, "/")
+			throw redirect(303, handleLoginRedirect(
+				{
+					request: {
+						url: {
+							pathname: event.url.pathname,
+							search: event.url.search
+						}
+					}
+				}
+			))
+			}
 		}
-	}
-
 	return resolve(event)
 }

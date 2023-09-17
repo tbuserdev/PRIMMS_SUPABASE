@@ -25,7 +25,7 @@
                         <Card.Title>Login mit E-Mail Magic-Link</Card.Title>
                         <Card.Description>Bitte gib deine Email-Adresse ein, um deinen Login-Link zu erhalten.</Card.Description>
                     </Card.Header>
-                    <form action="?/magiclink" method="POST">
+                    <form method="POST">
                         <Card.Content class="space-y-2 grid gap-4">
                             <div class="relative">
                                 <div class="absolute inset-0 flex items-center">

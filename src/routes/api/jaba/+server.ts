@@ -19,15 +19,15 @@ const editXLSX = async (formInfo: any, locals: any) => {
     worksheet.getCell("B7").value = worksheet.getCell("B7").value + formInfo.vorname;
     worksheet.getCell("D7").value = worksheet.getCell("D7").value + formInfo.geburtsdatum;
 
-    worksheet.getCell("C19").value = formInfo.anstellungsgrad;
+    let pensum: number = formInfo.anstellungsgrad;
+    worksheet.getCell("C19").value = pensum;
     worksheet.getCell("C20").value = 28;
 
     worksheet.getCell("A73").value = worksheet.getCell("A73").value + " " +formInfo.datum;
-
+    
     let jahresarbeitszeit = worksheet.getCell("E32").value;
-
     const modifiedArrayBuffer = await workbook.xlsx.writeBuffer();
-
+    
     // Upload Excel file
     const filename = `${formInfo.filedate}_${formInfo.vorname}-${formInfo.name}`
     const { data: uploadData, error: uploadError } = await locals.sb.storage.from('forms').upload(`jaba/${filename}.xlsx`, modifiedArrayBuffer, { contentType: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" })
