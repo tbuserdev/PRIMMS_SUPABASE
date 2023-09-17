@@ -5,6 +5,8 @@
     export let form: SuperValidated<FormSchema>;
     import { Label } from "$lib/components/ui/label";
     import * as RadioGroup from "$lib/components/ui/radio-group";
+
+    export let data;
 </script>
 
 <main>
