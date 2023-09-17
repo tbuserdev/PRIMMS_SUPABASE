@@ -61,6 +61,8 @@
                 </Form.Item>
             </Form.Field>
 
+            <!--
+
             <h2 class="scroll-m-20 text-xl font-semibold tracking-tight mb-2 mt-6">
                 Verantwortlichkeiten
             </h2>
@@ -73,15 +75,16 @@
 
             <RadioGroup.Root value="option-one">
                 <div class="flex items-center space-x-2 mb-2">
-                  <RadioGroup.Item value="option-one" id="option-one" />
+                  <RadioGroup.Item value="option-one" id="option-one" name="zeiterfassung" />
                   <Label for="option-one">Die Jahresarbeitszeit in den Bereichen C, D, und E wird anhand einer Zeiterfassung erfasst.</Label>
                 </div>
                 <div class="flex items-center space-x-2 mb-2">
-                  <RadioGroup.Item value="option-two" id="option-two" />
+                  <RadioGroup.Item value="option-two" id="option-two" name="eigenverantwortung" />
                   <Label for="option-two">Die Erbringung der Jahresarbeitszeit erfolgt in Eigenverantwortung.</Label>
                 </div>
               </RadioGroup.Root>
         
+            -->
             <Form.Button class="mt-6">Formular bestätigen und abschicken</Form.Button>
         </Form.Root>
     </div>
