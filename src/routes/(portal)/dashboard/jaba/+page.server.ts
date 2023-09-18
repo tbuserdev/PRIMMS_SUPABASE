@@ -1,6 +1,5 @@
 import { superValidate } from "sveltekit-superforms/server";
 import { formSchema } from "./schema";
-import { supabaseClient } from "$lib/supabase";
 
 export const load = async ({ url, locals }) => {
   return { 
