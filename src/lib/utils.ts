@@ -3,6 +3,16 @@ import { twMerge } from "tailwind-merge";
 import { cubicOut } from "svelte/easing";
 import type { TransitionConfig } from "svelte/transition";
 
+type CustomRequestEvent = {
+    request: {
+      url: {
+        pathname: string;
+        search: string;
+      };
+    };
+  };
+
+
 export function cn(...inputs: ClassValue[]) {
     return twMerge(clsx(inputs));
 }
@@ -60,3 +70,8 @@ export const flyAndScale = (
         easing: cubicOut
     };
 };
+
+export function handleLoginRedirect(event: CustomRequestEvent) {
+    const redirectTo = event.request.url.pathname + event.request.url.search;
+    return '/?redirect=' + redirectTo;
+}

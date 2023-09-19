@@ -1,35 +1,23 @@
 <script lang="ts">
 	import { Button } from "$lib/components/ui/button";
 	import * as Card from "$lib/components/ui/card";
-    import * as Tabs from "$lib/components/ui/tabs";
     import LogoutButton from "$lib/components/LogoutButton.svelte";
 
     export let data;
 </script>
 
 <!-- Title -->
-<div class="flex items-center justify-between space-y-2">
-    <h2 class="text-3xl font-bold tracking-tight">{data.session?.user.email}</h2>
-    <LogoutButton />
+<div class="flex items-end justify-between space-y-2 mb-8">
+    <h2 class="text-3xl font-bold tracking-tight">Willkommen {data.locals.userProfile?.first_name} {data.locals.userProfile?.last_name}!</h2>
 </div>
 <!-- TABS -->
-<Tabs.Root value="favs" class="space-y-4">
-    <Tabs.List>
-        <Tabs.Trigger value="favs">Favoriten</Tabs.Trigger>
-        <Tabs.Trigger value="allfunctions">Alle Funktionen</Tabs.Trigger>
-    </Tabs.List>
-    <Tabs.Content value="favs" class="space-y-4">
-        <Card.Root>
-            <Card.Header>
-                <Card.Title>Neue Funktion!</Card.Title>
-                <Card.Description>Dies ist eine Funktion, die eine bestimmte Aufgabe hat.</Card.Description>
-            </Card.Header>
-            <Card.Content>
-                <Button>Open Function</Button>
-            </Card.Content>
-            </Card.Root>
-    </Tabs.Content>
-    <Tabs.Content value="allfunctions" class="space-y-4">
-        <h1>Hello from the second Page!</h1>
-    </Tabs.Content>
-</Tabs.Root>
+<Card.Root>
+    <Card.Header>
+        <Card.Title>Jahresarbeitszeit & Berufsauftrag</Card.Title>
+        <Card.Description>Digitale Version des Papierformulars der Jahresarbeitszeit, sowie dem Excelsheet zur Berechnung des Berufsauftrag.</Card.Description>
+    </Card.Header>
+    <Card.Content>
+        <Button href="/dashboard/jaba">Formular ausfüllen</Button>
+    </Card.Content>
+</Card.Root>
+

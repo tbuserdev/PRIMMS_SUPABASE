@@ -1,42 +1,47 @@
-// src/routes/+page.server.ts
 import type { PageServerLoad } from './$types'
 import { AuthApiError } from "@supabase/supabase-js"
 import { fail, redirect } from "@sveltejs/kit"
-import type { Actions } from "@sveltejs/kit"
 import { supabaseClient } from "$lib/supabase";
-import type { U } from 'vitest/dist/types-198fd1d9';
 
 export const load: PageServerLoad = async ({ url, locals }) => {
-	return { url: url.origin }
+	return { 
+		url: url.origin,
+		locals: {
+		  session: locals.session,
+		  userProfile: locals.userProfile
+		}
+	  }
 }
 
-const getURL = () => {
-	let url: URL | string = '';
+const getURL = ( redirect: Request ) => {
+	let page = redirect.url
+	let url: URL | string = '';	
 
 	if (process?.env?.VERCEL_URL !== undefined) {
 		url = process?.env?.VERCEL_URL
 	} else if (process?.env?.URL == undefined) {
-		url = 'localhost:5173'
+		url = 'http://localhost:5173/' 
 	}
 
 	if (process?.env?.VERCEL_BRANCH_URL !== undefined) {
 		url = process?.env?.VERCEL_BRANCH_URL
 	} else if (process?.env?.URL == undefined) {
-		url = 'localhost:5173'
+		url = 'http://localhost:5173/'
 	}
 
 	url = url.includes('http') ? url : `https://${url}`
+	console.log(url)
 	return url
 }
 
-export const actions: Actions = {
-	login: async ({ request, locals }) => {
+export const actions = {
+	default: async ({ request }) => {
 		const body = Object.fromEntries(await request.formData())
 
-		const { data, error: err } = await supabaseClient.auth.signInWithOtp({
+		const { error: err } = await supabaseClient.auth.signInWithOtp({
             email: body.email as string,
             options: {
-                emailRedirectTo: getURL(),
+                emailRedirectTo: getURL(request),
                 shouldCreateUser: false,
             }
         })
@@ -51,6 +56,6 @@ export const actions: Actions = {
 				message: "Server error. Try again later.",
 			})
 		}
-    return { success: true };
-	},
+    	return { success: true };
+	}
 }
